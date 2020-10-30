@@ -7,6 +7,7 @@ import co.`fun`.testgiphy.di.modules.ApiModule
 import co.`fun`.testgiphy.di.modules.AppModule
 import co.`fun`.testgiphy.di.modules.DataModule
 import co.`fun`.testgiphy.di.modules.NavigationModule
+import io.paperdb.BuildConfig
 import io.paperdb.Paper
 import timber.log.Timber
 import toothpick.Toothpick
