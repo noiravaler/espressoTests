@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.bumptech.glide:recyclerview-integration:4.8.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1e8145d63992058826c80f0dd4bf1a8c/jetified-recyclerview-integration-4.8.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1e8145d63992058826c80f0dd4bf1a8c/jetified-recyclerview-integration-4.8.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1e8145d63992058826c80f0dd4bf1a8c/jetified-recyclerview-integration-4.8.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/db3c0a4888346445a70478d45fd167ac/jetified-recyclerview-integration-4.8.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/db3c0a4888346445a70478d45fd167ac/jetified-recyclerview-integration-4.8.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/db3c0a4888346445a70478d45fd167ac/jetified-recyclerview-integration-4.8.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/recyclerview-integration/4.8.0/b6f823b592dd34ef5797e7a634611c2bb4552a11/recyclerview-integration-4.8.0-javadoc.jar!/" />
