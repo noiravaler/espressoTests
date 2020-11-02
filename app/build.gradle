@@ -66,16 +66,21 @@ def allureVersion = '2.1.2'
 def junitVersion = '5.7.0'
 
 tasks.withType(Test) {
-    useJUnitPlatform {
-        includeEngines 'junit-jupiter', 'junit-vintage'
-    }
-    dependsOn 'cleanTest'
+    // useJUnitPlatform {
+    //      includeEngines 'junit-jupiter', 'junit-vintage'
+    //  }
+    //dependsOn 'cleanTest'
     testLogging {
         events "passed", "skipped", "failed"
     }
-
+    testLogging.showStandardStreams = true
     beforeTest { descriptor ->
         logger.lifecycle("Running test: " + descriptor)
+        logger.lifecycle("111111111")
+    }
+
+    onOutput { descriptor, event ->
+        logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
     }
 }
 

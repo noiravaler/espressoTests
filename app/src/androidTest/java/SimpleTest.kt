@@ -20,7 +20,7 @@ class SimpleTest {
     @Test
     fun listGoesOverTheFoldTest() {
         onView(withId(R.id.menu_trending_search)).perform(click())
-        Assertions.assertEquals(42, Integer.sum(19, 23))
+        Assertions.assertEquals(42, Integer.sum(119, 23))
     }
 
     @Test
