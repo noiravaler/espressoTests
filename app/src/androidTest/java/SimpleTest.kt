@@ -5,17 +5,19 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.rule.ActivityTestRule
 import co.`fun`.testgiphy.MainActivity
 import co.`fun`.testgiphy.R
+import io.qameta.allure.android.runners.AllureAndroidJUnit4
+import io.qameta.allure.android.runners.AllureAndroidJUnitRunner
 import org.junit.Rule
 import org.junit.Test
 import org.junit.jupiter.api.Assertions
 import org.junit.runner.RunWith
 
-@RunWith(AndroidJUnit4ClassRunner::class)
+//@RunWith(AllureAndroidJUnit4::class)
 class SimpleTest {
 
-    @Rule
-    @JvmField
-    val activityRule = ActivityTestRule(MainActivity::class.java)
+    //@Rule
+   // @JvmField
+   // val activityRule = ActivityTestRule(MainActivity::class.java)
 
     @Test
     fun listGoesOverTheFoldTest() {
