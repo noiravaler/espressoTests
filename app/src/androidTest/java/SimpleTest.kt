@@ -15,7 +15,7 @@ import org.junit.runner.RunWith
 class SimpleTest {
     @Rule
     @JvmField
-    val activityTestRule = ActivityTestRule(MainActivity::class.java, false, false)
+    val activityTestRule = ActivityTestRule(MainActivity::class.java)
 
     @Test
     fun listGoesOverTheFoldTest() {
