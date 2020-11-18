@@ -1,23 +1,17 @@
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
-import androidx.test.rule.ActivityTestRule
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import co.`fun`.testgiphy.MainActivity
 import co.`fun`.testgiphy.R
-import io.qameta.allure.android.runners.AllureAndroidJUnit4
-import io.qameta.allure.android.runners.AllureAndroidJUnitRunner
 import org.junit.Rule
 import org.junit.Test
 import org.junit.jupiter.api.Assertions
-import org.junit.runner.RunWith
 
-//@RunWith(AllureAndroidJUnit4::class)
 class SimpleTest {
-
-    //@Rule
-   // @JvmField
-   // val activityRule = ActivityTestRule(MainActivity::class.java)
+    @Rule
+    @JvmField
+    var activityActivityTestRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
     fun listGoesOverTheFoldTest() {
