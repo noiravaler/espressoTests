@@ -4,17 +4,17 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import co.`fun`.testgiphy.MainActivity
 import co.`fun`.testgiphy.R
+import io.qameta.allure.android.runners.AllureAndroidJUnit4
 import org.junit.Rule
 import org.junit.Test
 import org.junit.jupiter.api.Assertions
+import org.junit.runner.RunWith
 
-//@RunWith(AndroidJUnit4ClassRunner::class)
+@RunWith(AllureAndroidJUnit4::class)
 class SimpleTest {
     @Rule
     @JvmField
-    var activityActivityTestRule = ActivityScenarioRule(
-        MainActivity::class.java
-    )
+    var activityActivityTestRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
     fun listGoesOverTheFoldTest() {

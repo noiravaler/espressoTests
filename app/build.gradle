@@ -1,6 +1,5 @@
-plugins {
-    id("com.android.application")
-    id("de.mannodermaus.android-junit5")
+repositories {
+    maven { url 'https://dl.bintray.com/qameta/maven' }
 }
 
 apply plugin: 'com.android.application'
@@ -8,8 +7,17 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'de.mannodermaus.android-junit5'
-
+apply plugin: "io.qameta.allure"
 apply from: "../conf.gradle"
+
+allure {
+    autoconfigure = true
+    version = '2.9.0'
+    clean = true
+    reportDir = file("$projectDir/build/allure-report")
+    resultsDir = file("$projectDir/build/allure-results")
+    downloadLinkFormat = 'https://dl.bintray.com/qameta/maven/io/qameta/allure/allure-commandline/%s/allure-commandline-%<s.zip'
+}
 
 android {
     compileSdkVersion config.compileSdkVersion
@@ -19,7 +27,8 @@ android {
         targetSdkVersion config.targetSdkVersion
         versionCode config.versionCode
         versionName config.versionName
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "io.qameta.allure.android.runners.AllureAndroidJUnitRunner"
+        testInstrumentationRunnerArgument "runnerBuilder", "de.mannodermaus.junit5.AndroidJUnit5Builder"
     }
     buildTypes {
         all {
@@ -31,6 +40,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -38,8 +48,8 @@ android {
 
     testOptions {
         junitPlatform {
-            reportDir "$rootDir/test-reports"
-            resultsDir "$rootDir/test-results"
+            reportDir "$projectDir/build/test-reports"
+            resultsDir "$projectDir/build/test-results"
         }
     }
 
@@ -66,19 +76,12 @@ def allureVersion = '2.1.2'
 def junitVersion = '5.7.0'
 
 tasks.withType(Test) {
-    // useJUnitPlatform {
-    //      includeEngines 'junit-jupiter', 'junit-vintage'
-    //  }
-    //dependsOn 'cleanTest'
+    systemProperty 'allure.results.directory', "$projectDir/build/allure-results"
     testLogging {
-        events "passed", "skipped", "failed"
+        events "PASSED", "FAILED", "SKIPPED", "STANDARD_OUT", "STANDARD_ERROR"
     }
+    scanForTestClasses = false
     testLogging.showStandardStreams = true
-    beforeTest { descriptor ->
-        logger.lifecycle("Running test: " + descriptor)
-        logger.lifecycle("111111111")
-    }
-
     onOutput { descriptor, event ->
         logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
     }
@@ -101,4 +104,12 @@ dependencies {
     androidTestRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
     androidTestImplementation("org.junit.jupiter:junit-jupiter-params:$junitVersion")
     androidTestRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junitVersion")
+    androidTestImplementation "de.mannodermaus.junit5:android-test-core:1.2.0"
+    androidTestRuntimeOnly "de.mannodermaus.junit5:android-test-runner:1.2.0"
+
+    androidTestImplementation "io.qameta.allure:allure-kotlin-model:$allureVersion"
+    androidTestImplementation "io.qameta.allure:allure-kotlin-commons:$allureVersion"
+    androidTestImplementation "io.qameta.allure:allure-kotlin-junit4:$allureVersion"
+    androidTestImplementation "io.qameta.allure:allure-kotlin-android:$allureVersion"
+    androidTestImplementation "io.qameta.allure:allure-gradle:2.8.1"
 }
