@@ -4,10 +4,14 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import co.`fun`.testgiphy.MainActivity
 import co.`fun`.testgiphy.R
+import io.qameta.allure.android.runners.AllureAndroidJUnit4
+import io.qameta.allure.kotlin.junit4.AllureRunner
 import org.junit.Rule
 import org.junit.Test
 import org.junit.jupiter.api.Assertions
+import org.junit.runner.RunWith
 
+@RunWith(AllureAndroidJUnit4::class)
 class SimpleTest {
     @Rule
     @JvmField
